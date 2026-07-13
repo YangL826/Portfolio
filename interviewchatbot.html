@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InterviewChatbot — Artifact 01 — Yang Li</title>
+<meta name="description" content="An AI interview coach designed, built, tested and deployed using Design Thinking. Artifact 01 of Yang Li's professional portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Yang Li<span>, PhD</span></a>
+    <nav class="nav">
+      <a href="../index.html#bio">Bio</a>
+      <a href="../index.html#value">Value</a>
+      <a href="../index.html#artifacts" aria-current="page">Artifacts</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== TITLE ===== -->
+  <section class="doc-head">
+    <div class="wrap">
+      <p class="eyebrow">Artifact 01 &middot; AIML-500 &middot; July 2026</p>
+      <h1>InterviewChatbot: An AI Interview Coach Built with Design Thinking</h1>
+      <p class="hero-lede">A conversational AI coach I designed, built, tested, revised, and deployed. It is live, and you can use it right now.</p>
+      <p style="margin-top:28px;">
+        <a class="cta" href="https://mizou.com/preview-bot?ID=148659" target="_blank" rel="noopener">Try InterviewChatbot &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== INTRODUCTION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Introduction</div>
+      <div>
+        <h2>The gap is not questions. It is practice.</h2>
+        <p>Job seekers are not short on interview questions — a search returns thousands. What they lack is a safe, repeatable place to <em>practice answering</em> and get specific, honest feedback. The realistic alternative, a mock interview with a friend, is hard to schedule and socially awkward to critique: it is difficult to tell someone you care about that their answer was vague.</p>
+        <p>I built InterviewChatbot to close that gap, and to test something about myself in the process: whether I could take a poorly defined human problem and carry it the whole distance to a working product.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DESCRIPTION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Description</div>
+      <div>
+        <h2>What it does</h2>
+        <ul>
+          <li>Asks <strong>one question at a time</strong>, in conversation, rather than presenting a list.</li>
+          <li>Adapts its questions to the role and experience level the user describes, and coaches the <strong>STAR framework</strong> (Situation, Task, Action, Result) explicitly rather than assuming the user knows it.</li>
+          <li>Delivers <strong>structured feedback</strong> after each answer: what worked, what was missing, and a concrete alternative phrasing.</li>
+          <li>Holds the tone of a coach rather than an evaluator, so users are willing to keep practicing.</li>
+        </ul>
+        <p style="margin-top:20px;">It requires no account and no installation. Its behavior is enforced through a deliberately constrained system prompt rather than left to the model's defaults.</p>
+
+        <div class="figures" style="margin-top:30px;">
+          <figure>
+            <div class="shot"><img src="../images/shot-01.png" alt="Opening exchange with InterviewChatbot" ></div>
+            <figcaption>Fig. 1 — Opening exchange</figcaption>
+          </figure>
+          <figure>
+            <div class="shot"><img src="../images/shot-02.png" alt="A user answer submitted to the bot" ></div>
+            <figcaption>Fig. 2 — A practice answer</figcaption>
+          </figure>
+          <figure>
+            <div class="shot"><img src="../images/shot-03.png" alt="Structured feedback returned by the bot" ></div>
+            <figcaption>Fig. 3 — Structured feedback</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OBJECTIVE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Objective</div>
+      <div>
+        <h2>Why I made it</h2>
+        <p>I created this artifact to answer a question that matters more in practice than model architecture does: <strong>can I take a poorly defined human problem, judge whether AI is genuinely the right instrument, build something that works, and revise it on evidence rather than intuition?</strong></p>
+        <p>Concretely, my objectives were to:</p>
+        <ul>
+          <li>Apply the Design Thinking framework end to end, instead of jumping straight to building.</li>
+          <li>Demonstrate proficiency with generative AI tools by constraining a general-purpose model into a reliable, single-purpose one.</li>
+          <li>Produce a <em>deployed</em> artifact a stranger can use — not a notebook that runs only on my machine.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Process</div>
+      <div>
+        <h2>How I made it</h2>
+        <p style="margin-bottom:26px;">Before building, I ran the same structured prompt (Context → Task → Constraints) across three different large language models to see how each handled identical instructions. That comparison told me how tightly I would have to specify the bot's behavior. Then I worked the problem through Design Thinking.</p>
+
+        <table class="process">
+          <tr>
+            <th>Empathize</th>
+            <td>Identified the real user pain. The gap is not access to questions; it is access to <em>practice with feedback</em>.</td>
+          </tr>
+          <tr>
+            <th>Define</th>
+            <td>Wrote the problem statement: <em>A job seeker needs a low-stakes way to rehearse answers and receive specific, actionable feedback, because the existing alternatives are either generic or socially costly.</em></td>
+          </tr>
+          <tr>
+            <th>Ideate</th>
+            <td>Considered a question bank, a résumé analyzer, and a live coach. Chose the coach, because feedback — not content — was the actual gap.</td>
+          </tr>
+          <tr>
+            <th>Prototype</th>
+            <td>Built the assistant on Mizou. Wrote the system prompt to enforce one-question-at-a-time pacing and a fixed feedback structure.</td>
+          </tr>
+          <tr>
+            <th>Test</th>
+            <td>Ran live sessions. Found that early builds produced feedback that was encouraging but vague — <em>"Good answer, try to be more specific"</em> — which reads as success and teaches nothing.</td>
+          </tr>
+          <tr>
+            <th>Iterate</th>
+            <td>Rewrote the prompt to require the bot to name the missing element and supply a concrete replacement sentence. Re-tested across several question types to confirm the fix held.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOOLS ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Tools &amp; technologies</div>
+      <div>
+        <h2>What I used</h2>
+        <ul class="tool-list">
+          <li><span class="t">Mizou</span><span class="d">No-code chatbot platform — used to build, host, and publish the assistant.</span></li>
+          <li><span class="t">GPT / Gemini / Claude</span><span class="d">Comparative prompt testing across three models with an identical instruction.</span></li>
+          <li><span class="t">Prompt engineering</span><span class="d">Context → Task → Constraints framework; system-prompt design for behavioral constraint.</span></li>
+          <li><span class="t">Design Thinking</span><span class="d">Empathize / Define / Ideate / Prototype / Test.</span></li>
+          <li><span class="t">GitHub Pages</span><span class="d">Hosting for this portfolio.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALUE PROPOSITION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Value proposition</div>
+      <div>
+        <h2>Why it matters</h2>
+        <p>This artifact demonstrates that I can carry an AI problem the full distance — from an ambiguous human need to a deployed product — and explain every decision along the way.</p>
+        <p>That end-to-end ownership is the scarce skill. Many people can describe a model. Far fewer can decide <em>whether AI is the right tool at all</em>, design a solution around a real user, discover that the output is plausible but useless, and know what to do next. This project shows all three.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UNIQUE VALUE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Unique value</div>
+      <div>
+        <h2>The hardest problem in generative AI is not capability. It is evaluation.</h2>
+        <p>My background is computational: a Ph.D. built on molecular simulation and high-performance computing, then nearly two years as a data scientist in pharmaceutical drug discovery — building drug-response models, LLM and retrieval-augmented pipelines that cut manual lab-report curation by roughly 80%, and biomarker-discovery workflows that reduced a diagnostic panel from ten peptides to two.</p>
+        <p>That work taught me something this artifact puts on display. My first version of this bot failed in exactly the way LLM systems most often fail in production. It sounded right. It was warm, fluent, and completely useless. I caught it only because I tested rather than admired.</p>
+        <p>Bringing scientific evaluation discipline to generative AI — treating <em>"the output sounds good"</em> as a hypothesis rather than a result — is what I uniquely bring, and it is what separates a demo from a product.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RELEVANCE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Relevance</div>
+      <div>
+        <h2>Take this pattern into your own project.</h2>
+        <p>Anyone deploying a generative AI assistant will hit the problem I hit here: an LLM will happily produce output that is fluent, confident, and worthless, and it will do so in a way that survives casual inspection. Whether the assistant coaches interviews, summarizes clinical reports, or answers customer questions, the failure mode is identical.</p>
+        <p>So this artifact is written to be useful to others, not just about me. The process above is a reusable pattern:</p>
+        <div class="takeaway">
+          <ol>
+            <li><strong>Define the failure mode before you define success.</strong> Know what "sounds fine but is useless" would look like for your task.</li>
+            <li><strong>Constrain behavior in the system prompt rather than hoping for it.</strong> Pacing, structure, and tone will not emerge on their own.</li>
+            <li><strong>Test for usefulness, not fluency.</strong> They are not the same thing, and fluency will fool you.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REFERENCES ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">References</div>
+      <div>
+        <h2>Sources</h2>
+        <ul>
+          <li>Hasso Plattner Institute of Design at Stanford (d.school). <em>An Introduction to Design Thinking: Process Guide.</em> Stanford University.</li>
+          <li>Mizou. <em>Platform documentation.</em> <a href="https://mizou.com" target="_blank" rel="noopener">mizou.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;">
+    <span><a href="../index.html" style="border:0;color:inherit;">&larr; Back to portfolio</a></span>
+    <span>Artifact 01 &middot; AIML-500</span>
+  </div>
+</footer>
+
+</body>
+</html>
