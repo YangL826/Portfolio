@@ -1,0 +1,5 @@
+Portfolio: https://YangL826.github.io/Portfolio/
+
+## Reflection — Artifact 3
+
+For my third artifact, I used my Workshop 3 dialogue with an AI chatbot on the seven training-methods questions (supervised, unsupervised, and reinforcement learning, algorithms, the training loop, iteration, and the role of data). To make it suitable for a portfolio audience rather than a workshop submission, I expanded each answer beyond a simple definition and tested it against problems I have actually worked — molecular simulation, drug-response modeling, and biomarker discovery — so the artifact reads as applied understanding rather than recitation. Revising it this way is what surfaced the artifact's real takeaway: across every project I checked the answers against, the algorithm was rarely the limiting factor — the data was. That reframed how I presented the whole piece, shifting the emphasis from "here are seven definitions" to "here is the one factor that actually determines whether a model works." It also reinforced a habit I want to keep: treating an AI chatbot's answer as a draft to verify against real cases, not a final answer to accept as given.
