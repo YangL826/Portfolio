@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Training Methods in Machine Learning — Artifact 03 — Yang Li</title>
+<meta name="description" content="An AI-guided dialogue on how supervised, unsupervised, and reinforcement learning models are trained, with reflection tying the concepts to applied science and healthcare data work. Artifact 03 of Yang Li's professional portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Yang Li<span>, PhD</span></a>
+    <nav class="nav">
+      <a href="../index.html#bio">Bio</a>
+      <a href="../index.html#value">Value</a>
+      <a href="../index.html#artifacts" aria-current="page">Artifacts</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== TITLE ===== -->
+  <section class="doc-head">
+    <div class="wrap">
+      <p class="eyebrow">Artifact 03 &middot; AIML-500 &middot; Workshop 3 &middot; July 2026</p>
+      <h1>Training Methods in Machine Learning: An AI-Guided Dialogue</h1>
+      <p class="hero-lede">Workshop 3 paired a lesson on neural networks with a structured dialogue: put seven core questions about how machine learning models are trained to an AI chatbot, then reason through the answers myself. This artifact is that dialogue, expanded with what the questions meant for my own applied work.</p>
+    </div>
+  </section>
+
+  <!-- ===== INTRODUCTION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Introduction</div>
+      <div>
+        <h2>Before you trust a model, know how it learned.</h2>
+        <p>My first two artifacts show what I can build and how I tell my own story. This one shows something underneath both: whether I actually understand, at the mechanical level, how a machine learning model comes to know anything at all. That understanding is not decorative &mdash; it is what let me tell, in Artifact 01, that a chatbot's fluent-but-empty answer was a training and prompting problem, not a capability problem.</p>
+        <p>Workshop 3's assignment asked me to engage an AI chatbot in dialogue on seven questions spanning supervised, unsupervised, and reinforcement learning, the role of algorithms, the training loop itself, and the role of data. I used the conversation to sharpen my own explanations, then connected each answer back to problems I have actually worked &mdash; molecular simulation, drug-response modeling, biomarker discovery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DESCRIPTION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Description</div>
+      <div>
+        <h2>The seven questions</h2>
+
+        <h3><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">Q1</span>How does a supervised learning model learn from the training data?</h3>
+        <p>It learns from examples that already carry the correct answer. The model makes a prediction, compares it to the known label, and measures the gap between the two with a loss function. It then adjusts its internal parameters to shrink that gap, and repeats this across the whole training set until its predictions consistently track the labels &mdash; including on examples it has not seen before.</p>
+
+        <h3 style="margin-top:26px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">Q2</span>What is the main approach used to train models in unsupervised learning?</h3>
+        <p>There are no labels to check against, so the model instead optimizes an internal measure of structure in the data itself &mdash; grouping similar points together (clustering), or compressing the data down to the dimensions that explain most of its variation. The signal comes from the data's own shape, not from an external answer key.</p>
+
+        <h3 style="margin-top:26px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">Q3</span>In reinforcement learning, how does an agent learn the best actions to take?</h3>
+        <p>Through trial and consequence rather than examples. An agent takes an action in an environment, receives a reward or penalty, and updates its policy to make rewarded actions more likely in similar future situations. Over many episodes, it converges on a strategy that maximizes cumulative reward &mdash; learning from the outcomes of its own choices instead of from labeled data.</p>
+
+        <h3 style="margin-top:26px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">Q4</span>Why are algorithms important in the training of machine learning models?</h3>
+        <p>The algorithm is the procedure that actually converts data into a working model &mdash; it decides, at each step, how much and in what direction to adjust the model's parameters given the current error. The same data and the same model architecture can converge to very different results, or fail to converge at all, depending on the training algorithm used. The algorithm is where "learning" is actually implemented, not just described.</p>
+
+        <h3 style="margin-top:26px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">Q5</span>What are the basic steps involved in training a machine learning model?</h3>
+        <p>Collect and prepare the data; choose a model architecture; initialize its parameters, usually at random; run data through the model to get predictions; score those predictions against the true targets with a loss function; adjust the parameters to reduce that loss; repeat across the dataset; and finally validate performance on data the model never trained on, to check whether it generalizes rather than memorizes.</p>
+
+        <h3 style="margin-top:26px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">Q6</span>How does repetition (iterating over data) help in training a model?</h3>
+        <p>A single pass over the data rarely gets parameters close to their best values &mdash; each additional pass, or epoch, lets the model make another small correction based on the error it just made. Those small, repeated corrections compound into a much better fit than any single adjustment could, the same way a skill sharpens through repeated, corrected practice rather than a single attempt.</p>
+
+        <h3 style="margin-top:26px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">Q7</span>What is the role of examples (data) in training a machine learning model?</h3>
+        <p>Data is the model's only source of information about the pattern it is supposed to learn. The algorithm can be well-chosen and the architecture sound, but the model can still only learn what is actually present in its examples &mdash; if the data is sparse, unrepresentative, or mislabeled, the model will learn that flaw as confidently as it would learn the correct pattern. Of everything in this list, data quality is the ceiling on what a model can become.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OBJECTIVE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Objective</div>
+      <div>
+        <h2>Why I made it</h2>
+        <p>Workshop 3's learning objectives asked me to describe how artificial, convolutional, recurrent, and generative adversarial networks learn, and to use AI-guided dialogue to connect that theory to real scenarios. My objectives in turning that exercise into a portfolio artifact were to:</p>
+        <ul>
+          <li>Demonstrate that I can explain the mechanics of model training &mdash; not just use pretrained models &mdash; across the three major learning paradigms.</li>
+          <li>Show that I can use an AI chatbot as a genuine reasoning partner: asking it questions, then testing its answers against my own applied experience rather than accepting them at face value.</li>
+          <li>Connect foundational theory to the specific problems I have worked on, so the artifact reads as understanding rather than recitation.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Process</div>
+      <div>
+        <h2>How I made it</h2>
+        <table class="process">
+          <tr>
+            <th>Sequence</th>
+            <td>I put the seven questions to an AI chatbot in order, deliberately moving from the three learning paradigms (supervised, unsupervised, reinforcement) to the mechanics underneath all three (algorithms, the training loop, iteration, data).</td>
+          </tr>
+          <tr>
+            <th>Test</th>
+            <td>For each answer, I checked it against a case I had actually worked &mdash; asking, for instance, whether the chatbot's description of supervised learning matched how I trained drug-response models against measured concentration data.</td>
+          </tr>
+          <tr>
+            <th>Reframe</th>
+            <td>Where the chatbot's answer was accurate but generic, I rewrote it in terms that reflected my own understanding rather than leaving it as a paraphrase.</td>
+          </tr>
+          <tr>
+            <th>Connect</th>
+            <td>I added the through-line that ties all seven answers together for me: of every factor in the training process, data quality is the one I have seen determine outcomes most often, in Earth science and in healthcare alike.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOOLS ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Tools &amp; technologies</div>
+      <div>
+        <h2>What I used</h2>
+        <ul class="tool-list">
+          <li><span class="t">AI chatbot dialogue</span><span class="d">Course-guided conversational exercise used to surface and test explanations of ML training methods.</span></li>
+          <li><span class="t">Supervised / unsupervised / RL</span><span class="d">The three learning paradigms compared and contrasted across all seven questions.</span></li>
+          <li><span class="t">Gradient-based optimization</span><span class="d">The underlying mechanism referenced in the algorithm and training-loop answers.</span></li>
+          <li><span class="t">Applied domain knowledge</span><span class="d">Molecular simulation, drug-response modeling, and biomarker discovery, used to test each answer against real cases.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALUE PROPOSITION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Value proposition</div>
+      <div>
+        <h2>Why it matters</h2>
+        <p>Anyone can call a pretrained model's API. Explaining what actually happens during training &mdash; and knowing which of those mechanics is the weak point in a given project &mdash; is a different and scarcer skill. This artifact shows I hold that mechanical understanding, not just the ability to invoke a model as a black box.</p>
+        <p>It also shows I can use an AI chatbot as a tool for reasoning rather than a source of unexamined answers &mdash; testing what it tells me against evidence, the same discipline that runs through my other two artifacts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UNIQUE VALUE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Unique value</div>
+      <div>
+        <h2>Data is the ceiling, not the algorithm.</h2>
+        <p>Of the seven questions, the one that maps most directly onto my own career is the last: the role of data. In molecular simulation, in pharmaceutical drug-response modeling, and in the biomarker work that shrank a diagnostic panel from ten peptides to two, the algorithm was rarely the limiting factor &mdash; the data was. A well-chosen algorithm trained on sparse, biased, or mislabeled data will still learn the wrong thing, confidently.</p>
+        <p>That is the same lesson underneath Artifact 01's calibration specimen: a system that sounds right is not the same as a system that is right, and the difference usually traces back to what the system was actually trained or instructed on. Understanding training mechanics is what lets me diagnose that gap instead of just noticing it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RELEVANCE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Relevance</div>
+      <div>
+        <h2>A reference worth keeping.</h2>
+        <p>These seven questions are a compact mental model for anyone ramping up on machine learning fundamentals &mdash; the kind of grounding that makes later, more advanced material (architectures, fine-tuning, evaluation) easier to place. The habit underneath the exercise is the more durable takeaway:</p>
+        <div class="takeaway">
+          <ol>
+            <li><strong>Ask the AI, then test the answer.</strong> Treat a chatbot's explanation as a draft to verify against a case you actually know, not a final answer.</li>
+            <li><strong>Trace every result back to training.</strong> A model's behavior is a function of its data and its training procedure &mdash; when something goes wrong, that is where to look first.</li>
+            <li><strong>Data quality is the ceiling.</strong> No algorithm improves on what the data actually contains.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REFERENCES ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">References</div>
+      <div>
+        <h2>Source</h2>
+        <ul>
+          <li>Workshop 3, Assignment 3.3 &mdash; "Questions about Training Methods," AIML-500, Indiana Wesleyan University, July 2026.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;">
+    <span><a href="../index.html" style="border:0;color:inherit;">&larr; Back to portfolio</a></span>
+    <span>Artifact 03 &middot; AIML-500</span>
+  </div>
+</footer>
+
+</body>
+</html>
