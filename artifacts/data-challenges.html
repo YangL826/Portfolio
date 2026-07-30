@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Challenges in Machine Learning — Artifact 04 — Yang Li</title>
+<meta name="description" content="Three production ML data-challenge scenarios — missing data, noisy labels, and a credit-scoring model tangled in drift, imbalance, and fairness constraints — worked through in dialogue with an AI coach. Artifact 04 of Yang Li's professional portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Yang Li<span>, PhD</span></a>
+    <nav class="nav">
+      <a href="../index.html#bio">Bio</a>
+      <a href="../index.html#value">Value</a>
+      <a href="../index.html#artifacts" aria-current="page">Artifacts</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== TITLE ===== -->
+  <section class="doc-head">
+    <div class="wrap">
+      <p class="eyebrow">Artifact 04 &middot; AIML-500 &middot; Workshop 4 &middot; July 2026</p>
+      <h1>Data Challenges in Machine Learning: The Measurement Problem Precedes the Modeling Problem</h1>
+      <p class="hero-lede">An extended dialogue with Dot, an AI coach on SchoolAI.com, through three data-challenge scenarios of increasing difficulty: missing data, noisy labels, and a credit-scoring model tangled in concept drift, class imbalance, and fairness constraints at once. Condensed here to the reasoning that mattered.</p>
+    </div>
+  </section>
+
+  <!-- ===== INTRODUCTION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Introduction</div>
+      <div>
+        <h2>Knowing the technique is not the hard part.</h2>
+        <p>My first three artifacts show, in order, that I can build a deployed AI product, that I can own my own professional narrative, and that I understand the mechanics of how models are trained. This artifact shows a fourth, harder-won skill: production judgment under real constraints &mdash; cost, regulation, latency, fairness &mdash; where the right technique is rarely in question and the right <em>sequence and tradeoff</em> is.</p>
+        <p>Workshop 4 paired a lesson on data challenges in machine learning &mdash; data quality, cleaning, sharing, privacy, and security &mdash; with an individual, unscripted dialogue with an AI coach. Dot presented three scenarios, each harder than the last, and pushed back, asked follow-up questions, and graded the depth of my reasoning in real time rather than the correctness of a single answer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DESCRIPTION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Description</div>
+      <div>
+        <h2>Three scenarios</h2>
+
+        <h3><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">01</span>Missing data</h3>
+        <p><strong>Situation:</strong> A house-price model with 15% of rows missing "year built," reported as missing at random.</p>
+        <ul>
+          <li>Did not take "random" on faith &mdash; built a missingness flag and tested it against every other variable before trusting an MCAR assumption.</li>
+          <li>Weighed the standard menu (drop rows, mean/median imputation, neighborhood-informed group imputation, multivariate/iterative imputation, native NaN routing in gradient boosting) against what each actually costs: statistical power, variance shrinkage, compute, leakage risk.</li>
+          <li>Landed on gradient boosting with native NaN handling plus a missingness indicator, benchmarked against neighborhood-median imputation and against dropping the rows &mdash; chosen by validation performance, not principle.</li>
+          <li>Named two easy-to-violate guardrails: fit any imputer inside the training fold only, and never impute using the target variable.</li>
+        </ul>
+        <div class="takeaway" style="margin-top:18px;">
+          <p style="margin:0;">"If the missingness flag shows high importance, that's a warning sign that missingness is correlated with price through some mechanism I haven't identified &mdash; which sends me back to the MCAR check rather than forward to deployment."</p>
+        </div>
+
+        <h3 style="margin-top:34px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">02</span>Noisy labels</h3>
+        <p><strong>Situation:</strong> 50,000 manufacturing-defect images labeled by senior inspectors (~95% accurate, 60% of the data) and junior inspectors (~75% accurate, 40%, no overlap between labelers).</p>
+        <ul>
+          <li>First move was not to touch the training pipeline: built an adjudicated gold-standard test set from a stratified sample, using consensus among multiple senior reviewers &mdash; because evaluating on noisy labels makes every later decision unreliable, including whether a fix worked at all.</li>
+          <li>Converted "estimated 75%" into a measured, class-conditional confusion matrix by re-labeling a sample of junior-labeled images, rather than treating the number as fixed or the errors as uniform.</li>
+          <li>Used disagreement between an out-of-fold model and low-tier labels to rank and flag the highest-value images for senior re-review, instead of discarding 40% of the dataset or re-checking it at random.</li>
+          <li>Benchmarked a menu of training-time fixes &mdash; two-stage fine-tuning, per-source loss weighting, noise-matrix loss correction, robust losses, early stopping &mdash; rather than committing to one in advance.</li>
+          <li>On pseudo-labeling: guarded against confirmation bias by blending pseudo-labels with the original human label instead of overwriting it, and routing high-confidence human/model disagreements to a senior reviewer instead of auto-resolving them.</li>
+        </ul>
+        <div class="takeaway" style="margin-top:18px;">
+          <p style="margin:0;">"[High-confidence human/model disagreements] are the highest-information images in the dataset; auto-resolving them throws away the one place where a cheap human minute buys the most." On production monitoring: "the human override rate&nbsp;&hellip; is the only metric that measures whether the model matches the actual decision function rather than the labeled proxy."</p>
+        </div>
+
+        <h3 style="margin-top:34px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">03</span>Concept drift, imbalance, and fairness &mdash; together</h3>
+        <p><strong>Situation:</strong> A credit-default model trained on pre-pandemic data was now miscalibrated (predicted 5% defaults actualizing at 8&ndash;12%), defaults had grown rarer-but-shifting (3%&rarr;5%), and false-negative/false-positive rates ran unevenly across two demographic groups with similar base rates &mdash; all under &lt;100ms latency, no direct demographic features, and regulatory approval required for any retrain.</li>
+        <ul>
+          <li>Refused to treat the three problems as an independent checklist &mdash; sequenced interventions by cost and reversibility: an immediate, documented policy guardrail first, to stop underpricing risk without a hasty retrain.</li>
+          <li>Separated ranking from calibration as the key diagnostic: if AUC is stable but probabilities are off, the fix is cheap recalibration on a frozen model, not an expensive full retrain.</li>
+          <li>Reframed the imbalance complaint as an objective-function problem rather than a resampling problem: AUC is blind to calibration and asymmetric costs, so the approval cutoff should be derived from business cost ratios, not tuned by feel &mdash; and flagged that SMOTE-style oversampling actively damages calibration.</li>
+          <li>Diagnosed the fairness gap by cause rather than accepting the disparity as given: differential feature coverage for thin-file borrowers, label noise, and &mdash; the most likely root cause &mdash; selective labels from historical approval policy, fixable only through reject inference.</li>
+          <li>Noted that group-specific thresholds are disparate treatment under U.S. lending law, which pushed the fix toward closing feature gaps for underserved groups and searching the accuracy-versus-disparity frontier rather than accepting one point on it silently.</li>
+          <li>Proposed a cost-ordered ladder for the expensive, approval-gated retrain constraint &mdash; policy tweak &rarr; recalibration &rarr; constrained retrain &rarr; full redevelopment &mdash; and argued a full redevelopment should bundle every known fix at once, since it only gets one regulatory cycle.</li>
+          <li>Closed on governance: shadow deployment, staged rollout, pre-agreed automated tripwires, and the explicit refusal to pick a point on the fairness/accuracy tradeoff alone &mdash; that decision gets escalated with a quantified frontier, not made quietly by the model owner.</li>
+        </ul>
+        <div class="takeaway" style="margin-top:18px;">
+          <p style="margin:0;">"The measurement problem precedes the modeling problem every time. Scenario 1: verify the missingness mechanism before choosing an imputation strategy. Scenario 2: build the gold set before training anything. Scenario 3: recalibrate before optimizing&nbsp;&hellip; In each case the instinct to reach for a technique is the trap, and the discipline is to first establish that I can tell whether the technique helped."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OBJECTIVE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Objective</div>
+      <div>
+        <h2>Why I made it</h2>
+        <p>Workshop 4's objectives asked me to discuss approaches to data processing and cleaning and to explain the challenges of data sharing, privacy, and security in ML applications. My objectives in carrying this into the portfolio were to:</p>
+        <ul>
+          <li>Show judgment under the constraints that actually govern production ML &mdash; cost, regulatory approval, latency, and fairness law &mdash; not just knowledge of the underlying techniques.</li>
+          <li>Demonstrate a new skill distinct from my first three artifacts: sequencing and prioritizing competing fixes, rather than building a system, owning a narrative, or explaining training mechanics in isolation.</li>
+          <li>Capture the through-line the exercise surfaced on its own &mdash; that measurement has to be trustworthy before any fix can be evaluated &mdash; because it is the clearest, most reusable lesson in the whole conversation.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Process</div>
+      <div>
+        <h2>How I made it</h2>
+        <table class="process">
+          <tr>
+            <th>Engage</th>
+            <td>Worked through three progressively harder scenarios with Dot, an AI coach on SchoolAI.com, reasoning out loud rather than giving one-line answers.</td>
+          </tr>
+          <tr>
+            <th>Push back</th>
+            <td>Where the coach's follow-up questions exposed a gap in my reasoning (multiple imputation for prediction tasks, train/serve missingness drift, budget allocation across cleaning tasks), I answered with my genuine uncertainty rather than a confident guess.</td>
+          </tr>
+          <tr>
+            <th>Incorporate</th>
+            <td>Took the coach's additions seriously and folded them forward &mdash; the human-override-rate metric in Scenario 2, the rate-of-change framing for monitoring tripwires, and the exploration-band framing for reject inference in Scenario 3 all changed my stated approach mid-conversation.</td>
+          </tr>
+          <tr>
+            <th>Synthesize</th>
+            <td>Closed by naming the pattern that ran through all three scenarios instead of leaving them as three unrelated answers.</td>
+          </tr>
+          <tr>
+            <th>Condense</th>
+            <td>Compressed a long, technical conversation into the reasoning that would actually be useful to a portfolio reader, rather than reproducing the full transcript.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOOLS ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Tools &amp; technologies</div>
+      <div>
+        <h2>What I used</h2>
+        <ul class="tool-list">
+          <li><span class="t">SchoolAI &mdash; Dot</span><span class="d">AI coaching platform used for the scenario-based dialogue and real-time feedback.</span></li>
+          <li><span class="t">Imputation methods</span><span class="d">Group-wise/domain-informed imputation, iterative (MICE-style) imputation, and native NaN handling in gradient-boosted trees.</span></li>
+          <li><span class="t">Label-noise diagnostics</span><span class="d">Confusion-matrix estimation, confident-learning-style disagreement ranking, inter-rater agreement (kappa).</span></li>
+          <li><span class="t">Calibration</span><span class="d">Isotonic regression / Platt scaling to separate ranking quality from probability accuracy.</span></li>
+          <li><span class="t">Fairness &amp; drift diagnostics</span><span class="d">Reject inference, proxy-leakage testing, equalized-odds framing, PSI/KS-based drift monitoring.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALUE PROPOSITION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Value proposition</div>
+      <div>
+        <h2>Why it matters</h2>
+        <p>Most people who know machine learning can name the fix for missing data, noisy labels, or model drift. Far fewer can say, under real constraints, which fix to do <em>first</em>, what it costs to be wrong, and when a tradeoff is not theirs to resolve alone. This artifact is evidence of that second, scarcer skill: production judgment, not just technique recall.</p>
+        <p>It also shows I can take feedback from an AI coach seriously mid-conversation &mdash; incorporating a better framing when it is offered, rather than defending my first answer &mdash; while still pushing back with genuine, well-reasoned uncertainty where I have it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UNIQUE VALUE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Unique value</div>
+      <div>
+        <h2>The same discipline, at production scale.</h2>
+        <p>This artifact extends a thread that runs through my whole portfolio. Artifact 01 showed that a chatbot's fluent answer can be plausible without being right. Artifact 03 showed that of everything in a training pipeline, data quality is usually the ceiling on what a model can learn. This artifact adds the production-scale version of both: before you can trust a fix, cutoff, or fairness intervention, you have to trust your measurement of it &mdash; a gold-standard test set, a calibrated probability, a validated missingness mechanism.</p>
+        <p>That discipline is the same one my scientific training instilled long before I touched machine learning: in molecular simulation and in pharmaceutical data, a result was only as good as the measurement underneath it. Carrying that instinct into credit scoring, defect detection, and imputation is not a new value &mdash; it is the same one, applied one level up, to systems with regulatory and human stakes attached.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RELEVANCE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Relevance</div>
+      <div>
+        <h2>A pattern worth keeping.</h2>
+        <p>Anyone deploying ML into a real, constrained system &mdash; not just a notebook &mdash; will run into some version of these three scenarios. The reusable pattern:</p>
+        <div class="takeaway">
+          <ol>
+            <li><strong>Verify before you fix.</strong> Test the assumption behind a problem (randomness, label accuracy, calibration) before choosing a technique to solve it.</li>
+            <li><strong>Sequence by cost and reversibility.</strong> Cheap, auditable, reversible fixes go first; expensive or hard-to-undo ones go last, and only once the diagnosis justifies them.</li>
+            <li><strong>Know which decisions aren't yours.</strong> A tradeoff with business, legal, or human cost gets quantified and escalated &mdash; not resolved quietly under the cover of technical judgment.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REFERENCES ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">References</div>
+      <div>
+        <h2>Source</h2>
+        <ul>
+          <li>Workshop 4, Assignment 4.3 &mdash; "Data Challenge Scenarios," via Dot (SchoolAI.com AI coach), AIML-500, Indiana Wesleyan University, July 2026.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;">
+    <span><a href="../index.html" style="border:0;color:inherit;">&larr; Back to portfolio</a></span>
+    <span>Artifact 04 &middot; AIML-500</span>
+  </div>
+</footer>
+
+</body>
+</html>
