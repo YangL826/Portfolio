@@ -18,6 +18,7 @@
     <nav class="nav">
       <a href="../index.html#bio">Bio</a>
       <a href="../index.html#value">Value</a>
+      <a href="../index.html#audience">Audience</a>
       <a href="../index.html#artifacts" aria-current="page">Artifacts</a>
     </nav>
   </div>
@@ -79,7 +80,7 @@
         </div>
 
         <h3 style="margin-top:34px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">03</span>Concept drift, imbalance, and fairness &mdash; together</h3>
-        <p><strong>Situation:</strong> A credit-default model trained on pre-pandemic data was now miscalibrated (predicted 5% defaults actualizing at 8&ndash;12%), defaults had grown rarer-but-shifting (3%&rarr;5%), and false-negative/false-positive rates ran unevenly across two demographic groups with similar base rates &mdash; all under &lt;100ms latency, no direct demographic features, and regulatory approval required for any retrain.</li>
+        <p><strong>Situation:</strong> A credit-default model trained on pre-pandemic data was now miscalibrated (predicted 5% defaults actualizing at 8&ndash;12%), defaults had grown rarer-but-shifting (3%&rarr;5%), and false-negative/false-positive rates ran unevenly across two demographic groups with similar base rates &mdash; all under &lt;100ms latency, no direct demographic features, and regulatory approval required for any retrain.</p>
         <ul>
           <li>Refused to treat the three problems as an independent checklist &mdash; sequenced interventions by cost and reversibility: an immediate, documented policy guardrail first, to stop underpricing risk without a hasty retrain.</li>
           <li>Separated ranking from calibration as the key diagnostic: if AUC is stable but probabilities are off, the fix is cheap recalibration on a frozen model, not an expensive full retrain.</li>
