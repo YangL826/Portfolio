@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Applied Signal — Artifact 05 — Yang Li</title>
+<meta name="description" content="A newsletter tracking commercial AI deployments across life sciences, energy, and software engineering — and the specific business decision each one changes. Artifact 05 of Yang Li's professional portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Yang Li<span>, PhD</span></a>
+    <nav class="nav">
+      <a href="../index.html#bio">Bio</a>
+      <a href="../index.html#value">Value</a>
+      <a href="../index.html#audience">Audience</a>
+      <a href="../index.html#artifacts" aria-current="page">Artifacts</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== TITLE ===== -->
+  <section class="doc-head">
+    <div class="wrap">
+      <p class="eyebrow">Artifact 05 &middot; AIML-500 &middot; Workshop 6 &middot; August 2026</p>
+      <h1>The Applied Signal: Commercial Applications of AI Across Three Industries</h1>
+      <p class="hero-lede">A newsletter I wrote for Workshop 6, tracking where AI actually created commercial value this quarter &mdash; not benchmark scores, but the specific business decision each deployment changes, across life sciences, energy, and software engineering.</p>
+    </div>
+  </section>
+
+  <!-- ===== INTRODUCTION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Introduction</div>
+      <div>
+        <h2>The interesting question isn't which model. It's which decision.</h2>
+        <p>Most AI coverage I read this summer was about benchmark scores. That wasn't the part that changed my mind about anything. What changed my mind was noticing that almost nothing launched in the past month was a smarter model &mdash; what launched were <em>places to put a model</em>: a workbench, a platform, a data center. So for Workshop 6, I picked three industries I have either worked in or studied, and for each one I tried to answer a single question: which business decision does this thing actually change?</p>
+        <p>My first four artifacts show that I can build, narrate, theorize about, and engineer around AI systems. This one shows a different, later-career skill: reading a quarter of AI product launches the way an analyst or a technical leader has to &mdash; separating the announcement from the decision it actually moves.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DESCRIPTION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Description</div>
+      <div>
+        <h2>The Applied Signal &mdash; Notes on the AI that has already left the lab</h2>
+
+        <h3><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">01</span>Life sciences: somebody finally sold the plumbing</h3>
+        <p>On June 30, Anthropic released Claude Science &mdash; not a new model, but a research environment bundling more than sixty scientific functions and databases (genomics, proteomics, structural biology, cheminformatics) in one place, with Novo Nordisk and the Allen Institute among the early users. The commercial insight most coverage missed: in computational discovery, the slow step is usually not the algorithm, it's the seams &mdash; the glue work of moving data between a dozen tools and file formats, which quietly eats a real share of a research team's week and never shows up in a demo. Selling the integration targets labor cost and cycle time, a much bigger line item than accuracy. The market noticed: Schr&ouml;dinger, whose business is discovery software, fell as much as 8.3% intraday. The same quarter, Isomorphic Labs added Johnson &amp; Johnson as a third pharma partner, and Eli Lilly committed up to $1 billion with NVIDIA for a research supercomputer. Caveat worth repeating: no AI-originated drug has been approved yet.</p>
+
+        <h3 style="margin-top:30px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">02</span>Energy: the same idea, aimed at a much more expensive decision</h3>
+        <p>SLB and NVIDIA are building an "AI Factory for Energy" &mdash; domain-specific generative and agentic AI running inside Delfi and Lumi, the platforms oil and gas companies already use. Viridien is applying HPC and AI to reimage its existing seismic library, including a program over roughly 4,300 square kilometres of Angola's Block 22. The decision at stake isn't research &mdash; it's capital allocation: drill or don't drill, on a well that can cost hundreds of millions offshore. A sharper subsurface image moves the odds of an expensive dry hole, and reprocessing archived data costs a fraction of a new survey vessel. Underneath this: AI is now the grid's fastest-growing customer. In June, U.S. regulators told six regional grid operators to speed up interconnection for large users like data centers.</p>
+
+        <h3 style="margin-top:30px;"><span style="color:var(--amber); font-family:var(--mono); font-size:12px; letter-spacing:.08em; margin-right:10px;">03</span>Software engineering: the assistant became a budget line</h3>
+        <p>Gartner puts the enterprise AI coding agent market at roughly $9.8&ndash;$11.0 billion annualized as of April 2026, and expects that by 2027 more than 65% of engineering teams using agentic coding will treat the IDE itself as optional. The pattern is reaching business software too: Oracle expanded its partnership with Google Cloud so Gemini models run inside its AI Agent Studio and Fusion applications, and Atlassian added AI-native development features to Jira. What's interesting is where the difficulty moves: once an agent can open a pull request on its own, the hard question stops being whether the code is good. It becomes who the agent is logged in as, what gets recorded, and who signs off &mdash; that's where rollouts stall, not at the model.</p>
+
+        <h3 style="margin-top:30px;">A closer look at Claude Science</h3>
+        <p>Of the three, this is the one I sat with longest, because it's the clearest case of a general-purpose AI company selling straight into a scientific workflow instead of through a specialist vendor.</p>
+        <ul>
+          <li><strong>The tool layer gets consolidated.</strong> Research groups already pay for integration &mdash; just in staff time rather than on an invoice. Buying it instead turns an internal cost center into a subscription: a good trade for a mid-sized biotech, an uncomfortable one for vendors whose differentiation was the tooling itself.</li>
+          <li><strong>The scarce skill moves.</strong> If an agent can run a multi-step analysis from a one-line instruction, what's left for the scientist is choosing the question and deciding whether the answer is believable. Groups that read that as a headcount cut will get worse science; groups that read it as a shift toward experimental design will get faster science.</li>
+          <li><strong>A new dependency appears.</strong> Running discovery inside somebody else's environment is a dependency in your most sensitive function. I'd expect data residency and reproducibility, not price, to become the real negotiation.</li>
+        </ul>
+        <p>Two things outside the vendor's control will decide how far this goes. First, regulation: FDA guidance on AI is expected to be finalized in 2026 and will require credibility assessment plans for high-risk uses. Second, data: in one survey, 68% of technology executives named poor data quality and governance as the main reason their AI initiatives failed &mdash; and no workbench repairs a messy data estate.</p>
+
+        <h3 style="margin-top:30px;">At a glance</h3>
+        <table class="process">
+          <tr>
+            <th>Life sciences</th>
+            <td><strong>Anthropic &mdash; Claude Science (beta).</strong> Targets fragmented target-to-hit computational workflows. Changes which candidate molecules advance, and how fast.</td>
+          </tr>
+          <tr>
+            <th>Energy</th>
+            <td><strong>SLB + NVIDIA (AI Factory for Energy); Viridien (HPC/AI reimaging).</strong> Targets seismic imaging and reservoir modeling. Changes drill-or-don't-drill decisions and acreage bids.</td>
+          </tr>
+          <tr>
+            <th>Software</th>
+            <td><strong>Oracle AI Agent Studio; Atlassian Jira; coding agents.</strong> Targets planning, writing, and reviewing code. Changes how engineering capacity is allocated and governed.</td>
+          </tr>
+        </table>
+
+        <div class="takeaway" style="margin-top:24px;">
+          <p style="margin:0;">One chart I kept coming back to: nearly two-thirds of enterprises have tried AI agents. Fewer than one in ten have scaled them to measurable value, and Gartner expects more than 40% of agentic projects to be cancelled by the end of 2027. The deployments that work in pharma and energy have one thing in common &mdash; they aim at a single expensive, well-defined decision instead of at productivity in general.</p>
+        </div>
+
+        <p style="margin-top:22px;"><strong>Bottom line:</strong> three different industries, one pattern. What mattered this month wasn't a smarter model but a place to put one &mdash; a workbench for the scientist, a factory for the driller, a governed platform for the engineer. If that holds, the resources that get scarce are well-curated data, the judgment to catch a wrong answer, and, oddly enough, electricity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OBJECTIVE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Objective</div>
+      <div>
+        <h2>Why I made it</h2>
+        <p>Workshop 6 asked me to identify and analyze key commercial applications of AI across industries, and to evaluate their impact on business processes and decision-making. My objectives in carrying this into the portfolio were to:</p>
+        <ul>
+          <li>Demonstrate a skill none of my first four artifacts show: reading AI industry developments the way a technical leader or analyst has to, translating an announcement into the specific business decision it changes.</li>
+          <li>Use my own background in pharmaceutical drug discovery to say something informed, not generic, about the life-sciences example &mdash; rather than treating all three industries with equal, shallow distance.</li>
+          <li>Practice sourcing discipline: every claim in the newsletter traces to a dated, named source, the same rigor I'd want in any technical report I hand to a decision-maker.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Process</div>
+      <div>
+        <h2>How I made it</h2>
+        <table class="process">
+          <tr>
+            <th>Scan</th>
+            <td>Read a broad set of AI industry announcements from the past month rather than starting from a fixed list of industries.</td>
+          </tr>
+          <tr>
+            <th>Select</th>
+            <td>Picked three industries where I could add real judgment &mdash; life sciences and healthcare from my own work, energy and software as points of comparison &mdash; and where the story wasn't just "a company shipped a better model."</td>
+          </tr>
+          <tr>
+            <th>Deep-dive</th>
+            <td>For Claude Science specifically, went past the launch announcement to ask what actually changes for a research group: cost structure, the scarce skill, the new dependency.</td>
+          </tr>
+          <tr>
+            <th>Synthesize</th>
+            <td>Looked across all three write-ups for a common pattern rather than leaving them as three unrelated items, and found one: value came from where to put a model, not from a smarter model.</td>
+          </tr>
+          <tr>
+            <th>Source</th>
+            <td>Cited every factual claim to a dated, named source (Gartner, MIT Technology Review, company press releases) rather than a general impression of "what's happening in AI."</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOOLS ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Tools &amp; technologies</div>
+      <div>
+        <h2>What I used</h2>
+        <ul class="tool-list">
+          <li><span class="t">Primary sources</span><span class="d">Company press releases and product announcements (Anthropic, SLB, Viridien, Oracle, Atlassian).</span></li>
+          <li><span class="t">Industry research</span><span class="d">Gartner market sizing and adoption forecasts; MIT Technology Review and Pharmaphorum reporting.</span></li>
+          <li><span class="t">Domain background</span><span class="d">My own pharmaceutical drug-discovery experience, used to evaluate the Claude Science analysis rather than just summarize it.</span></li>
+          <li><span class="t">Citation discipline</span><span class="d">APA-style source list, dated and attributed, matching the standard I'd use in any professional technical report.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALUE PROPOSITION ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Value proposition</div>
+      <div>
+        <h2>Why it matters</h2>
+        <p>Technical skill tells you whether an AI system works. Commercial judgment tells you whether it matters &mdash; which decision it changes, whether the market is pricing that correctly, and where the real friction will show up once it leaves the demo. This artifact is evidence of that second, distinct skill: I can read a quarter of AI product launches and tell a decision-maker which ones are worth their attention, and why.</p>
+        <p>It's also evidence of the "translation" pillar of my value proposition applied outward instead of inward &mdash; not explaining my own technical work to a non-technical audience, but explaining an industry's technical developments in terms of the business decisions they actually move.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UNIQUE VALUE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Unique value</div>
+      <div>
+        <h2>I've been on the other side of the Claude Science story.</h2>
+        <p>Most people writing about AI in drug discovery are describing a workflow from the outside. I spent nearly two years as a data scientist in pharmaceutical drug discovery, building the kind of models and pipelines that Claude Science is now trying to consolidate &mdash; which is why I could name the actual cost it targets (the glue work between a dozen tools and file formats) instead of repeating the launch copy. That's the same instinct that runs through this whole portfolio: whether the subject is a chatbot's fluent-but-empty answer, a model's training data, or a product launch's press coverage, the discipline is the same &mdash; don't stop at what's plausible, check what's actually true underneath it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RELEVANCE ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">Relevance</div>
+      <div>
+        <h2>A pattern you can reuse on the next AI launch.</h2>
+        <p>Anyone evaluating AI product announcements &mdash; as an investor, an engineering leader, or just someone trying to separate signal from noise &mdash; can ask the same three questions I used here:</p>
+        <div class="takeaway">
+          <ol>
+            <li><strong>Which decision does this actually change?</strong> Not "is the model good," but what business choice moves differently because this exists.</li>
+            <li><strong>Where does the difficulty move to?</strong> Once the obvious bottleneck is solved, a new one appears &mdash; usually governance, trust, or data, not capability.</li>
+            <li><strong>Check the adoption data, not just the announcement.</strong> Most agentic AI pilots don't scale; the ones that do target one expensive, well-defined decision instead of general productivity.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REFERENCES ===== -->
+  <section class="field">
+    <div class="wrap field-grid">
+      <div class="section-label">References</div>
+      <div>
+        <h2>Sources</h2>
+        <ul>
+          <li>Gartner. (2026, May 20). <em>Gartner says the market for enterprise AI coding agents is entering a new phase of expansion and competitive realignment</em> [Press release].</li>
+          <li>MIT Technology Review. (2026, June 30). <em>Claude Science is Anthropic's newest flagship product.</em></li>
+          <li>Pharmaphorum. (2026, July 1). <em>Anthropic launches Claude Science for pharma researchers.</em></li>
+          <li>SLB. (2026, March 25). <em>SLB industrializes AI for the energy industry with NVIDIA</em> [Press release].</li>
+          <li>Vision Life Sciences. (2026, June 27). <em>Drug discovery AI news: Latest developments.</em></li>
+          <li>Viridien. (2026, July 22). <em>Viridien brings global seismic intelligence to Angola Oil &amp; Gas 2026 as bronze sponsor.</em></li>
+          <li>Northflank. (2026, May 7). <em>Enterprise AI coding agent deployment in 2026.</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;">
+    <span><a href="../index.html" style="border:0;color:inherit;">&larr; Back to portfolio</a></span>
+    <span>Artifact 05 &middot; AIML-500</span>
+  </div>
+</footer>
+
+</body>
+</html>
